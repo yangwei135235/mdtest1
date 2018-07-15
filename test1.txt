@@ -7,7 +7,7 @@ Variables         lib/var.py
 
 *** Test Cases ***
 case-01
-    Debug
+    Comment    Debug
     log    hello world!
     ${x}    Set Variable    10    #设置变量x的值为字符串10
     ${y}    Set Variable    ${10}    #设置变量y的值为数值10
