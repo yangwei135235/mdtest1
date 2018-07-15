@@ -1,0 +1,20 @@
+*** Variables ***
+${IP}             192.168.80.128
+
+*** Keywords ***
+setup
+    [Arguments]    ${table_name}
+    log    预置条件
+    log    链接数据库
+    Connect To Database    pymysql    scott    tester    passwd    ${IP}    3306
+    ...    utf8
+    OperatingSystem.Run    taskkill /f /im chromedriver.exe    #杀残留的driver进程
+    Execute Sql String    delete from ${table_name}    #清掉脏数据
+    log    打开浏览器
+    Open Browser    http://${IP}/mt    chrome
+    log    点击自动化测试课程
+
+teardown
+    log    恢复环境
+    Disconnect From Database    #关闭连接数据库
+    Close Browser
