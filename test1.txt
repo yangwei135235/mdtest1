@@ -1,4 +1,4 @@
-﻿*** Settings ***
+*** Settings ***
 Library           DebugLibrary
 Library           CSVLibrary
 Library           ExcelLibrary
@@ -7,6 +7,7 @@ Variables         lib/var.py
 
 *** Test Cases ***
 case-01
+    Debug
     log    hello world!
     ${x}    Set Variable    10    #设置变量x的值为字符串10
     ${y}    Set Variable    ${10}    #设置变量y的值为数值10
@@ -25,7 +26,7 @@ case-02
     ${x}    Set Variable    ${3}
     ${y}    Evaluate    ${x}+1
     log    ${y}
-    log    ${xx}
+    Comment    log    ${xx}
     log    ${/}
     log    ${:}
     log    ${CURDIR}${/}mdres.txt    #内置变量
@@ -44,8 +45,8 @@ case-excel
     log    ${x}
     ${y}    Get Row Count    Sheet1
     log    ${y}
-    :FOR    ${i}    in    ${DATA_ORDER_CASE_03}
-    \    ${i[0]}    ${i[1]}
+    Comment    :FOR    ${i}    in    ${DATA_ORDER_CASE_03}
+    Comment    \    ${i[0]}    ${i[1]}
 
 case-mylib
     ${x}    Get Curdir
